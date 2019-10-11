@@ -54,7 +54,7 @@ class Solution {
             return false;
         } else if (x < 10) {
             return true;
-        }
+        };
         String str = String.valueOf(x);
         int len = str.length();
         for (int i = 0; i < len / 2; i++) {
