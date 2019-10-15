@@ -1,7 +1,3 @@
-// import java.util.Arrays;
-// import java.util.LinkedList;
-// import java.util.List;
-
 /*
  * @lc app=leetcode id=27 lang=java
  *
