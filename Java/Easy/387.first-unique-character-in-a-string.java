@@ -6,11 +6,11 @@
  * https://leetcode.com/problems/first-unique-character-in-a-string/description/
  *
  * algorithms
- * Easy (51.32%)
- * Likes:    1422
+ * Easy (51.31%)
+ * Likes:    1413
  * Dislikes: 98
- * Total Accepted:    377.8K
- * Total Submissions: 736.1K
+ * Total Accepted:    376.2K
+ * Total Submissions: 733.2K
  * Testcase Example:  '"leetcode"'
  *
  * 
@@ -41,27 +41,26 @@ class Solution {
         if (s.length() == 0) {
             return -1;
         }
-        int[] idx = new int[26];
-        Arrays.fill(idx, -1);
-        for (int i = 0; i < s.length(); i++) {
-            int curIdx = s.charAt(i) - 'a';
-            if (idx[curIdx] == -1) {
-                idx[curIdx] = i;
-            } else if (idx[curIdx] < s.length()) {
-                idx[curIdx] = s.length();
+        int[] count = new int[26];
+        char[] s1 = s.toCharArray();
+        for (char c : s1) {
+            count[c - 'a']++;
+        }
+        for (char c : s1) {
+            if (count[c - 'a'] == 1) {
+                return find(s1,c);
             }
         }
-        int ans = -1;
-        for (int i : idx) {
-            if (i > -1 && i < s.length()) {
-                if (ans == -1) {
-                    ans = i;
-                } else {
-                    ans = i < ans ? i : ans;
-                }
+        return -1;
+    }
+
+    public static int find(char[] s, char c) {
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] == c) {
+                return i;
             }
         }
-        return ans;
+        return -1;
     }
 }
 // @lc code=end
